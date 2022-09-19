@@ -1,0 +1,35 @@
+
+  .var-voltage{
+    width: 159px;
+    height: 119px;
+    border-radius: 8px;
+    border: solid 3px #3751FF;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2,0.7fr);
+    place-items: center;
+    
+  }
+  
+  .var-judul{
+    position: relative;
+    top: -2px;
+    font-size: 19px;
+    font-weight: 700;
+    grid-column: 1/span 2;
+  }
+  
+  .var-angka{
+    font-size: 48px;
+    color: #3751FF;
+    position: relative;
+    left: 50%;
+  }
+  
+  .var-satuan{
+    font-size: 15px;
+    font-weight: 550;
+    position: relative;
+    right: 5px;
+    top: 10px;
+  }

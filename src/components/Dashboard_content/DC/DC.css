@@ -1,0 +1,17 @@
+
+  .DC-container{
+    position: relative;
+    height: 600px;
+    width: 1122px;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: #A5A6F6;
+    background-color: white;
+  }
+  
+  .var-container{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    place-items: center;
+  }
+  
