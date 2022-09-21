@@ -1,12 +1,12 @@
 import "./App.css";
-import Content from "./components/Dashboard_content/Content_Main/Content";
+import SolarContent from "./components/Solar_panel/SolarContent";
 import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <>
       <Navbar />
-      <Content />
+      <SolarContent />
     </>
   );
 }

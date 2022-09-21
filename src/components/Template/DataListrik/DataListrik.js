@@ -1,7 +1,7 @@
 import React from "react";
-import "./Tegangan.css";
+import "./DataListrik.css";
 
-function Tegangan(props) {
+function DataListrik(props) {
   return (
     <div className="var-voltage">
       <div className="var-judul">{props.judul}</div>
@@ -11,4 +11,4 @@ function Tegangan(props) {
   );
 }
 
-export default Tegangan;
+export default DataListrik;

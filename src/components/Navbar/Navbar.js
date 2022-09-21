@@ -20,13 +20,13 @@ function Navbar() {
           <div className="nav-img">
             <FontAwesomeIcon icon={faSolarPanel} size='xl' />
           </div>
-          <div className="nav-text">PV</div>
+          <div className="nav-text">Solar Panel</div>
         </div>
         <div className="nav-item">
           <div className="nav-img">
             <FontAwesomeIcon icon={faFan} size='xl'/>
           </div>
-          <div className="nav-text">Wind</div>
+          <div className="nav-text">Wind Turbine</div>
         </div>
       </div>
     </nav>
