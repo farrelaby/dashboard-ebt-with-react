@@ -1,10 +1,12 @@
 import React from "react";
 import "./Navbar.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFan, faSolarPanel, faChartLine } from "@fortawesome/free-solid-svg-icons";
-
-
-const logo_width = 30;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFan,
+  faSolarPanel,
+  faChartLine,
+} from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -12,22 +14,28 @@ function Navbar() {
       <div className="nav-container">
         <div className="nav-item">
           <div className="nav-img">
-            <FontAwesomeIcon icon={faChartLine} size='xl' />
+            <FontAwesomeIcon icon={faChartLine} size="xl" />
           </div>
           <div className="nav-text">Dashboard</div>
         </div>
-        <div className="nav-item">
-          <div className="nav-img">
-            <FontAwesomeIcon icon={faSolarPanel} size='xl' />
+
+        <NavLink to="/pv">
+          <div className="nav-item">
+            <div className="nav-img">
+              <FontAwesomeIcon icon={faSolarPanel} size="xl" />
+            </div>
+            <div className="nav-text">Solar Panel</div>
           </div>
-          <div className="nav-text">Solar Panel</div>
-        </div>
-        <div className="nav-item">
-          <div className="nav-img">
-            <FontAwesomeIcon icon={faFan} size='xl'/>
+        </NavLink>
+
+        <NavLink to="/wind">
+          <div className="nav-item">
+            <div className="nav-img">
+              <FontAwesomeIcon icon={faFan} size="xl" />
+            </div>
+            <div className="nav-text">Wind Turbine</div>
           </div>
-          <div className="nav-text">Wind Turbine</div>
-        </div>
+        </NavLink>
       </div>
     </nav>
   );
