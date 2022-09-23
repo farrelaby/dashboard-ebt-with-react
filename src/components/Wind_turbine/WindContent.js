@@ -40,16 +40,6 @@ function WindContent() {
         graph_data = {data}
         graph_options = {options}
         />
-        <DataContainer 
-        name = '⚡ Alternating Current (AC) ⚡'
-        volt = {volt}
-        ampere = {ampere}
-        watt = {watt}
-        kWh = {kWh}
-        percent = {percent}
-        graph_data = {data}
-        graph_options = {options}
-        />
         <div className="Env-container"></div>
       </div>
     </div>
