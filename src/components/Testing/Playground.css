@@ -1,0 +1,22 @@
+.content{
+    margin-left: 212px;
+    padding: 1px 16px;
+    height: 100%;
+    
+  }
+  
+  .content h1{
+    position: relative;
+    top: 8px;
+    left: 39px;
+    width: fit-content;
+  }
+  
+  .content-container{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    position: relative;
+    top: 55px;
+    gap: 60px;
+  }
+  
