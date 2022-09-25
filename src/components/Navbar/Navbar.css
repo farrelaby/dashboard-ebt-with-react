@@ -17,7 +17,7 @@ nav:hover {
 
 .nav-container {
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   position: relative;
   top: 128px;
   text-align: left;
@@ -34,7 +34,7 @@ nav:hover {
   top: 25%;
 }
 
-.active{
+.active {
   text-decoration: none;
   color: white;
   background-color: hsl(0, 0%, 50%, 0.5);
