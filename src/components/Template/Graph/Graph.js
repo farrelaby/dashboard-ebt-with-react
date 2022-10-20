@@ -13,7 +13,6 @@ import {
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
 function Graph(props) {
-
   return (
     <div className="graph-container">
       <h2>Daya vs Radiasi</h2>
