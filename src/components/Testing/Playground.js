@@ -5,14 +5,13 @@ import "./Playground.css";
 import DataContainer from "../Template/DataContainer/DataContainer";
 
 function Playground() {
-  
   const { data: catData } = useQuery(
     ["cat"],
     () => {
       return Axios.get("https://catfact.ninja/fact").then((res) => res.data);
     },
     {
-      refetchInterval: 1000,
+      refetchInterval: 500,
     }
   );
 
@@ -22,14 +21,13 @@ function Playground() {
   const [kWh, setKWh] = useState(0);
   const [percent, setPercent] = useState(0);
 
-  const [list,setList] = useState([1, 5, 8, 9, 10, 12]);
+  const [list, setList] = useState([1, 5, 8, 9, 10, 12]);
 
   const udpateList = () => {
-    setList(prev => [...prev,catData?.length]);
+    setList((prev) => [...prev, catData?.length]);
     // const newData = [first,...list];
-    setList(list => list.slice(-5))
-
-  }
+    setList((list) => list.slice(-5));
+  };
 
   const updateAmpere = (val) => {
     setAmpere(val + 5);
@@ -44,9 +42,7 @@ function Playground() {
     console.log(list);
   }, [catData?.length]);
 
-  
-
-  const data = {
+  const data_daya = {
     labels: ["1", "2", "3", "4", "5"],
     datasets: [
       {
@@ -74,7 +70,8 @@ function Playground() {
           watt={watt}
           kWh={kWh}
           percent={percent}
-          graph_data={data}
+          graph_daya_data={data_daya}
+          graph_energi_data={data_daya}
           graph_options={options}
         />
         <div className="Env-container"></div>

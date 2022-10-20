@@ -3,17 +3,24 @@
   grid-template-columns: 1fr 3fr;
   position: relative;
   height: 344px;
-  width: 1061px;
+  width: fit-content;
   place-items: center;
-  top: 19px;
-  left: 27px;
-  border: solid 3px #3751ff;
+  /* top: 19px; */
+  /* left: 27px; */
+  /* border: solid 3px #3751ff; */
   border-radius: 8px;
   place-items: center;
+  color: white;
 }
 
-.graph-line{
-  width: 690px;
+h2 {
+  position: relative;
+  left: 20%;
+}
+
+.graph-line {
+  width: 590px;
   height: 300px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
+  padding-right: 20px;
 }

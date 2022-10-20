@@ -13,13 +13,6 @@ function Navbar() {
   return (
     <nav>
       <div className="nav-container">
-        <div className="nav-item">
-          <div className="nav-img">
-            <FontAwesomeIcon icon={faChartLine} size="xl" />
-          </div>
-          <div className="nav-text">Dashboard</div>
-        </div>
-
         <NavLink to="/pv">
           <div className="nav-item">
             <div className="nav-img">

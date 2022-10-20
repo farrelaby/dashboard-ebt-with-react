@@ -1,0 +1,28 @@
+Tujuan dashboard
+
+-Sistem on grid(keluaran inverter/AC)
+	- Tegangan ga berubah
+	- Arus berubah
+	- Daya berubah
+	- Paling penting daya AC(angka dan grafik)
+	-Fokus nampilin daya vs waktu
+	- tegangan sama arus ditampilin kek pilihan advanced
+	- Daya vs waktu dibuat per hari/minggu/bulan
+	- daya vs waktu bisa nambah radiasi vs waktu di grafik yang sama (di axis kanan)
+	- kalo bisa 
+
+- DC PV
+	- dibuat kek digital voltmeter
+	- data realtime saat itu aja gausah dibuat logging sebelumnya
+
+- Angin
+	- DC ajah
+	- DC vs potensi angin
+	- minimal kecepatan angin vs daya listrik per waktu (kayak daya & radiasi vs waktu)
+	- maksimal buat wind rose
+
+energy chart dibuat bar chart banyak ae
+daya chart dibuat kontinyu line chart
+
+bisa milih tanggal untuk daya vs waktu 
+kalo energi harus jelas dia per 5 menit ato per jam ato gmn
