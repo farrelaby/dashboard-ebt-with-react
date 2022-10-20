@@ -15,7 +15,6 @@ ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 function Graph(props) {
   return (
     <div className="graph-container">
-      <h2>Daya vs Radiasi</h2>
       <div className="graph-line">
         {/* <h1>📈</h1> */}
         <Line data={props.data} options={props.options} />

@@ -1,13 +1,8 @@
 .graph-container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
   position: relative;
   height: 344px;
   width: fit-content;
   place-items: center;
-  /* top: 19px; */
-  /* left: 27px; */
-  /* border: solid 3px #3751ff; */
   border-radius: 8px;
   place-items: center;
   color: white;
@@ -15,12 +10,12 @@
 
 h2 {
   position: relative;
-  left: 20%;
+  left: 10%;
 }
 
 .graph-line {
-  width: 590px;
+  width: 650px;
   height: 300px;
-  padding-bottom: 20px;
-  padding-right: 20px;
+  /* padding-bottom: 20px;
+  padding-right: 20px; */
 }

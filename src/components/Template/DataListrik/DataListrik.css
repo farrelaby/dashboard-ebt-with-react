@@ -1,5 +1,5 @@
 .var-voltage {
-  width: fit-content;
+  width: auto;
   height: 100%;
   border-radius: 8px;
   /* border: solid 3px #3751FF; */
@@ -7,11 +7,12 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, 0.7fr);
   place-items: center;
+  /* margin-left: 10%; */
 }
 
 .var-judul {
   position: relative;
-  top: -2px;
+  top: 2rem;
   font-size: 19px;
   font-weight: 700;
   grid-column: 1 / span 2;
@@ -22,12 +23,14 @@
   color: #3751ff;
   position: relative;
   left: 50%;
+  bottom: 2rem;
+  text-align: right;
 }
 
 .var-satuan {
   font-size: 15px;
   font-weight: 550;
   position: relative;
-  left: 15px;
-  top: 10px;
+  left: 10px;
+  bottom: 1.5rem;
 }

@@ -6,7 +6,11 @@ function DataListrik(props) {
     <div className="var-voltage">
       <div className="var-judul">{props.judul}</div>
       <div className="var-angka">{props.angka}</div>
-      <div className="var-satuan">{props.satuan}</div>
+      <div className="var-satuan">
+        Today
+        <br />
+        {props.satuan}
+      </div>
     </div>
   );
 }

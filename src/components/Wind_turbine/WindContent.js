@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./WindContent.css";
 import DataContainer from "../Template/DataContainer/DataContainer";
+import DataListrik from "../Template/DataListrik/DataListrik";
 
 function WindContent() {
   const [volt, setVolt] = useState(0);
   const [ampere, setAmpere] = useState(0);
   const [watt, setWatt] = useState(0);
   const [kWh, setKWh] = useState(0);
+  const [isAdv, setIsAdv] = useState(false);
 
   // Graph
   const data_daya = {
@@ -41,7 +43,11 @@ function WindContent() {
       <h1>
         <b>Wind Turbine</b>
       </h1>
-      <div className="content-container">
+      <div className="wind-content-container">
+        <div className="text-center text-white ml-28">
+          <h3>Yogyakarta</h3>
+          <div>Anjas</div>
+        </div>
         <DataContainer
           name="⚡ Direct Current (DC) ⚡"
           watt={watt}
@@ -50,7 +56,31 @@ function WindContent() {
           graph_energi_data={data_energi}
           graph_options={options}
         />
-        <div className="Env-container"></div>
+        <div
+          id="environment"
+          className="flex flex-col gap-8 place-items-center"
+        >
+          <button
+            className="bg-[hsl(220,60%,35%)] hover:bg-[hsl(220,60%,45%)] text-white font-bold mt-7 rounded shadow-md"
+            onClick={() => {
+              setIsAdv(!isAdv);
+            }}
+          >
+            Advanced Option
+          </button>
+          {isAdv ? (
+            <div className="flex flex-row gap-4">
+              <div className="env-num w-60 h-60">
+                <DataListrik judul="Daya" angka={10} satuan="W" />
+              </div>
+              <div className="env-num w-60 h-60">
+                <DataListrik judul="Daya" angka={10} satuan="W" />
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );

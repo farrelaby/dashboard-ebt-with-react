@@ -1,7 +1,7 @@
 .content {
   margin-left: 212px;
   padding: 1px 16px;
-  height: 100%;
+  height: fit-content;
 }
 
 .content h1 {
@@ -11,10 +11,15 @@
   color: white;
 }
 
-.content-container {
+.wind-content-container {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 0.2fr 1fr 1fr;
   position: relative;
   top: 55px;
-  gap: 60px;
+  justify-items: center;
+}
+
+.env-num {
+  background-color: #191966;
+  color: white;
 }
