@@ -17,6 +17,55 @@ function DataContainer(props) {
     setIsDaya(false);
   };
 
+  const options = {
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+    stacked: false,
+    plugins: {
+      legend: {
+        display: true,
+        fontColor: "#ffffff",
+      },
+    },
+    scales: {
+      y: {
+        type: "linear",
+        display: true,
+        position: "left",
+        title: {
+          text: isDaya ? "Daya" : "Energi",
+          display: true,
+          font: {
+            size: 14,
+          },
+        },
+        grid: {
+          drawOnChartArea: true,
+          color: "gray",
+        },
+      },
+      y1: {
+        type: "linear",
+        display: isDaya ? true : false,
+        position: "right",
+        title: {
+          text: "Kec. Angin",
+          display: true,
+          font: {
+            size: 14,
+          },
+        },
+        grid: {
+          drawOnChartArea: false,
+          color: "white",
+        },
+      },
+    },
+  };
+
   return (
     <div className="var-container">
       <div className="var-graph">
@@ -48,31 +97,30 @@ function DataContainer(props) {
         </div>
         {!isDaya ? (
           <>
+            {/* INI ENERGI */}
             <div className="flex flex-row gap-8">
-              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 mt-2 rounded-md shadow-lg">
+              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 my-4 rounded-md shadow-lg">
                 <div className="text-white">Dari</div>
                 <DatePicker value={startDate} onChange={setStartdate} />
               </div>
-              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 mt-2 rounded-md shadow-lg">
+              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 my-4 rounded-md shadow-lg">
                 <div className="text-white">Sampai</div>
                 <DatePicker value={endDate} onChange={setEnddate} />
               </div>
             </div>
             {console.log(startDate)}
-            <Graph data={props.graph_daya_data} options={props.graph_options} />
+            <Graph data={props.graph_energi_data} options={options} />
           </>
         ) : (
           <>
+            {/* INI DAYA */}
             <div className="flex flex-row gap-8">
-              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 mt-2 rounded-md shadow-lg">
+              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 my-4 rounded-md shadow-lg">
                 <div className="text-white">Tanggal</div>
                 <DatePicker value={startDate} onChange={setStartdate} />
               </div>
             </div>
-            <Graph
-              data={props.graph_energi_data}
-              options={props.graph_options}
-            />
+            <Graph data={props.graph_daya_data} options={options} />
           </>
         )}
       </div>

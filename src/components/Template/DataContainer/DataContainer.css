@@ -1,7 +1,7 @@
 .DC-container {
   position: relative;
   height: 600px;
-  width: 1000px;
+  width: 1400px;
   border-radius: 8px;
   border-style: solid;
   border-color: #a5a6f6;
@@ -16,6 +16,7 @@
   row-gap: 0.4rem;
   width: 1200px;
   margin-top: 1rem;
+  margin-right: 4rem;
 }
 
 .var-graph {

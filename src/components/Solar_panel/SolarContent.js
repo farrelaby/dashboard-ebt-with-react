@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./SolarContent.css";
 import DataContainer from "../Template/DataContainer/DataContainer";
 import { useEffect } from "react";
+import DataListrik from "../Template/DataListrik/DataListrik";
+import { SeeMore } from "../Template/SeeMore/SeeMore";
 
 function SolarContent() {
   const [volt, setVolt] = useState(0);
@@ -29,26 +31,93 @@ function SolarContent() {
     datasets: [
       {
         data: [1, 5, 8, 9, 10],
-        backgroundColor: "Transparent",
+        backgroundColor: "#3751FF",
         borderColor: "#3751FF",
         pointBorderColor: "#3751FF",
         pointBorderWidth: 5,
+        yAxisID: "y",
+        label: "Daya",
+      },
+      {
+        data: [10, 15, 8, 19, 20],
+        backgroundColor: "#e4e500",
+        borderColor: "#e4e500",
+        fill: "+1",
+        pointBorderColor: "#e4e500",
+        pointBorderWidth: 5,
+        yAxisID: "y1",
+        label: "Kec. Angin",
       },
     ],
   };
+
   const data_energi = {
     labels: ["1", "2", "3", "4", "5"],
     datasets: [
       {
+        label: "Energi",
         data: [20, 5, 11, 9, 10],
         backgroundColor: "Transparent",
         borderColor: "#3751FF",
         pointBorderColor: "#3751FF",
         pointBorderWidth: 5,
+        yAxisID: "y",
       },
     ],
   };
-  const options = {};
+  const options = {
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+    stacked: false,
+    plugins: {
+      legend: {
+        display: true,
+        fontColor: "#ffffff",
+      },
+    },
+    scales: {
+      y: {
+        type: "linear",
+        display: true,
+        position: "left",
+        title: {
+          text: "Daya",
+          display: true,
+          font: {
+            size: 14,
+          },
+        },
+        grid: {
+          drawOnChartArea: true,
+          color: "gray",
+        },
+      },
+      y1: {
+        type: "linear",
+        display: true,
+        position: "right",
+        title: {
+          text: "Kec. Angin",
+          display: true,
+          font: {
+            size: 14,
+          },
+        },
+        grid: {
+          drawOnChartArea: false,
+          color: "white",
+        },
+      },
+      x: {
+        grid: {
+          // color: "white",
+        },
+      },
+    },
+  };
   // End of graph
 
   return (
@@ -87,10 +156,18 @@ function SolarContent() {
             graph_energi_data={data_energi}
             graph_options={options}
           />
+          <SeeMore volt={volt} ampere={ampere} />
           <div className="Env-container"></div>
         </div>
       ) : (
-        <h1>WORK IN PROGRESS</h1>
+        <div className="flex flex-row gap-4 mt-16 justify-center">
+          <div className="env-num w-60 h-60">
+            <DataListrik judul="Tegangan" angka={volt} satuan="V" />
+          </div>
+          <div className="env-num w-60 h-60">
+            <DataListrik judul="Arus" angka={ampere} satuan="A" />
+          </div>
+        </div>
       )}
     </div>
   );

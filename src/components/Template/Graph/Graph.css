@@ -1,6 +1,6 @@
 .graph-container {
   position: relative;
-  height: 344px;
+  height: 400px;
   width: fit-content;
   place-items: center;
   border-radius: 8px;
@@ -15,7 +15,7 @@ h2 {
 
 .graph-line {
   width: 650px;
-  height: 300px;
+  height: 400px;
   /* padding-bottom: 20px;
   padding-right: 20px; */
 }
