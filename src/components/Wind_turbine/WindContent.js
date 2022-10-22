@@ -44,9 +44,9 @@ function WindContent() {
       {
         label: "Energi",
         data: [20, 5, 11, 9, 10],
-        backgroundColor: "Transparent",
-        borderColor: "#3751FF",
-        pointBorderColor: "#3751FF",
+        backgroundColor: "#38ff42",
+        borderColor: "#38ff42",
+        pointBorderColor: "#38ff42",
         pointBorderWidth: 5,
         yAxisID: "y",
       },
@@ -57,19 +57,22 @@ function WindContent() {
 
   return (
     <div className="content">
-      <h1>
-        <b>Wind Turbine</b>
-      </h1>
-      <div className="wind-content-container">
-        <div className="text-center text-white ml-28 z-10">
-          <h2>Yogyakarta</h2>
-          <div>WORK IN PROGRESS</div>
+      <div className="flex flex-row my-10">
+        <h1 className="flex-1 w-64 text-5xl font-extraboldbold">
+          Wind Turbine
+        </h1>
+        <div className="flex-1 w-10 flex flex-col text-right mt-4 mr-28 text-slate-50">
+          <div className="text-2xl">Yogyakarta</div>
+          <p>Cuaca</p>
         </div>
+      </div>
+      <div className="wind-content-container">
         <DataContainer
           watt={watt}
           kWh={kWh}
           graph_daya_data={data_daya}
           graph_energi_data={data_energi}
+          isWind
         />
         <SeeMore volt={volt} ampere={ampere} />
       </div>

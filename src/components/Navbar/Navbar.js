@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="shadow-xl shadow-slate-800">
       <div className="nav-container">
         <NavLink to="/pv">
           <div className="nav-item">

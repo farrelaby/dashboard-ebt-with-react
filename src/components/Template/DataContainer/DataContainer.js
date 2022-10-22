@@ -17,13 +17,15 @@ function DataContainer(props) {
     setIsDaya(false);
   };
 
+  const isWind = props.isWind;
+
   const options = {
     responsive: true,
     interaction: {
       mode: "index",
       intersect: false,
     },
-    stacked: false,
+    stacked: true,
     plugins: {
       legend: {
         display: true,
@@ -52,7 +54,7 @@ function DataContainer(props) {
         display: isDaya ? true : false,
         position: "right",
         title: {
-          text: "Kec. Angin",
+          text: isWind ? "Kec. Angin" : "Radiasi",
           display: true,
           font: {
             size: 14,
@@ -68,7 +70,7 @@ function DataContainer(props) {
 
   return (
     <div className="var-container">
-      <div className="var-graph">
+      <div className="var-graph rounded-xl shadow-xl">
         <div className="flex flex-row gap-8">
           <button
             className={`${
@@ -94,6 +96,7 @@ function DataContainer(props) {
           >
             Energi
           </button>
+          {console.log("afkh iswind : " + isWind)}
         </div>
         {!isDaya ? (
           <>
@@ -108,7 +111,7 @@ function DataContainer(props) {
                 <DatePicker value={endDate} onChange={setEnddate} />
               </div>
             </div>
-            {console.log(startDate)}
+            {/* {console.log(startDate)} */}
             <Graph data={props.graph_energi_data} options={options} />
           </>
         ) : (
@@ -124,10 +127,10 @@ function DataContainer(props) {
           </>
         )}
       </div>
-      <div className="var-num ">
+      <div className="var-num rounded-xl shadow-xl hover:scale-105 hover:-translate-y-2 transition-transform">
         <DataListrik judul="Daya" angka={props.watt} satuan="W" />
       </div>
-      <div className=" var-num">
+      <div className=" var-num rounded-xl shadow-xl hover:scale-105 hover:translate-y-2 transition-transform">
         <DataListrik judul="Energi" angka={props.kWh} satuan="kWh" />
       </div>
     </div>

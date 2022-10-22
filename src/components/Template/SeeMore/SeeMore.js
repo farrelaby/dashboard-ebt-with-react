@@ -21,10 +21,10 @@ export function SeeMore({ volt, ampere }) {
 
       {isAdv ? (
         <div className="flex flex-row gap-4">
-          <div className="env-num w-60 h-60">
+          <div className="env-num w-60 h-60 rounded-xl shadow-xl hover:scale-105 transition-transform">
             <DataListrik judul="Tegangan" angka={volt} satuan="V" />
           </div>
-          <div className="env-num w-60 h-60">
+          <div className="env-num w-60 h-60 rounded-xl shadow-xl hover:scale-105 transition-transform">
             <DataListrik judul="Arus" angka={ampere} satuan="A" />
           </div>
         </div>

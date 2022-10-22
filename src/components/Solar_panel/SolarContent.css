@@ -11,12 +11,11 @@
   width: fit-content;
 }
 
-.content-container {
+.solar-content-container {
   display: grid;
   grid-template-rows: 1fr 1fr;
   position: relative;
   top: 55px;
-  gap: 60px;
 }
 
 button {

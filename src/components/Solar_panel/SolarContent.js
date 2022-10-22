@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./SolarContent.css";
 import DataContainer from "../Template/DataContainer/DataContainer";
-import { useEffect } from "react";
 import DataListrik from "../Template/DataListrik/DataListrik";
 import { SeeMore } from "../Template/SeeMore/SeeMore";
 
@@ -20,10 +19,6 @@ function SolarContent() {
   const changeDC = () => {
     setIsAC(false);
   };
-
-  useEffect(() => {
-    console.log(isAC);
-  }, [isAC]);
 
   // Graph
   const data_daya = {
@@ -46,7 +41,7 @@ function SolarContent() {
         pointBorderColor: "#e4e500",
         pointBorderWidth: 5,
         yAxisID: "y1",
-        label: "Kec. Angin",
+        label: "Radiasi",
       },
     ],
   };
@@ -57,74 +52,27 @@ function SolarContent() {
       {
         label: "Energi",
         data: [20, 5, 11, 9, 10],
-        backgroundColor: "Transparent",
-        borderColor: "#3751FF",
-        pointBorderColor: "#3751FF",
+        backgroundColor: "#38ff42",
+        borderColor: "#38ff42",
+        pointBorderColor: "#38ff42",
         pointBorderWidth: 5,
         yAxisID: "y",
       },
     ],
   };
-  const options = {
-    responsive: true,
-    interaction: {
-      mode: "index",
-      intersect: false,
-    },
-    stacked: false,
-    plugins: {
-      legend: {
-        display: true,
-        fontColor: "#ffffff",
-      },
-    },
-    scales: {
-      y: {
-        type: "linear",
-        display: true,
-        position: "left",
-        title: {
-          text: "Daya",
-          display: true,
-          font: {
-            size: 14,
-          },
-        },
-        grid: {
-          drawOnChartArea: true,
-          color: "gray",
-        },
-      },
-      y1: {
-        type: "linear",
-        display: true,
-        position: "right",
-        title: {
-          text: "Kec. Angin",
-          display: true,
-          font: {
-            size: 14,
-          },
-        },
-        grid: {
-          drawOnChartArea: false,
-          color: "white",
-        },
-      },
-      x: {
-        grid: {
-          // color: "white",
-        },
-      },
-    },
-  };
+  const isWind = false;
   // End of graph
 
   return (
     <div className="content">
-      <h1 className="mb-8">
-        <b>Solar Panel</b>
-      </h1>
+      <div className="flex flex-row my-10">
+        <h1 className="flex-1 w-64 text-5xl font-extraboldbold">Solar Panel</h1>
+        <div className="flex-1 w-10 flex flex-col text-right mt-4 mr-28 text-slate-50">
+          <div className="text-2xl">Yogyakarta</div>
+
+          <p>Cuaca</p>
+        </div>
+      </div>
       <div className="flex flex-row gap-8 items-center justify-center">
         <button
           onClick={changeAC}
@@ -148,16 +96,15 @@ function SolarContent() {
         </button>
       </div>
       {isAC ? (
-        <div className="content-container">
+        <div className="solar-content-container">
           <DataContainer
             watt={watt}
             kWh={kWh}
             graph_daya_data={data_daya}
             graph_energi_data={data_energi}
-            graph_options={options}
+            isWind={isWind}
           />
           <SeeMore volt={volt} ampere={ampere} />
-          <div className="Env-container"></div>
         </div>
       ) : (
         <div className="flex flex-row gap-4 mt-16 justify-center">

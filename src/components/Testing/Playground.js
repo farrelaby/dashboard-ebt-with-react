@@ -11,7 +11,7 @@ function Playground() {
       return Axios.get("https://catfact.ninja/fact").then((res) => res.data);
     },
     {
-      refetchInterval: 500,
+      refetchInterval: 1500,
     }
   );
 
@@ -22,11 +22,18 @@ function Playground() {
   const [percent, setPercent] = useState(0);
 
   const [list, setList] = useState([1, 5, 8, 9, 10, 12]);
+  const [list_2, setList_2] = useState([1, 5, 8, 9, 10, 12]);
 
   const udpateList = () => {
     setList((prev) => [...prev, catData?.length]);
     // const newData = [first,...list];
     setList((list) => list.slice(-5));
+  };
+
+  const udpateList_2 = () => {
+    setList_2((prev) => [...prev, catData?.length + 50]);
+    // const newData = [first,...list];
+    setList_2((list_2) => list_2.slice(-5));
   };
 
   const updateAmpere = (val) => {
@@ -38,7 +45,7 @@ function Playground() {
   useEffect(() => {
     updateAmpere(catData?.length);
     udpateList();
-
+    udpateList_2();
     console.log(list);
   }, [catData?.length]);
 
@@ -47,14 +54,25 @@ function Playground() {
     datasets: [
       {
         data: list,
-        backgroundColor: "Transparent",
+        backgroundColor: "#3751FF",
         borderColor: "#3751FF",
         pointBorderColor: "#3751FF",
         pointBorderWidth: 5,
+        yAxisID: "y",
+        label: "Daya",
+      },
+      {
+        data: list_2,
+        backgroundColor: "#e4e500",
+        borderColor: "#e4e500",
+        fill: "+1",
+        pointBorderColor: "#e4e500",
+        pointBorderWidth: 5,
+        yAxisID: "y1",
+        label: "Radiasi",
       },
     ],
   };
-  const options = {};
   // End of graph
 
   return (
@@ -72,7 +90,6 @@ function Playground() {
           percent={percent}
           graph_daya_data={data_daya}
           graph_energi_data={data_daya}
-          graph_options={options}
         />
         <div className="Env-container"></div>
       </div>
