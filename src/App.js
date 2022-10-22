@@ -15,6 +15,7 @@ function App() {
       <MantineProvider theme={{ colorScheme: "dark" }}>
         <Navbar />
         <Routes>
+          <Route path="/" element={<SolarContent />} />
           <Route path="/pv" element={<SolarContent />} />
           <Route path="/wind" element={<WindContent />} />
           <Route path="/test" element={<Playground />} />
