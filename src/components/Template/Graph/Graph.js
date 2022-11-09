@@ -1,5 +1,4 @@
 import React from "react";
-import "./Graph.css";
 
 import { Line } from "react-chartjs-2";
 import {
@@ -27,11 +26,9 @@ ChartJS.defaults.color = "#ffffff";
 
 function Graph(props) {
   return (
-    <div className="graph-container ">
-      <div className="graph-line ">
-        {/* <h1>📈</h1> */}
-        <Line data={props.data} options={props.options} />
-      </div>
+    <div className="w-[700px] mb-4 mt-6">
+      {/* <h1>📈</h1> */}
+      <Line data={props.data} options={props.options} />
     </div>
   );
 }

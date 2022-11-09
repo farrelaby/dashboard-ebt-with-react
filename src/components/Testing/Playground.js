@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Axios from "axios";
+import axios from "axios";
 import "./Playground.css";
 import DataContainer from "../Template/DataContainer/DataContainer";
 
@@ -8,7 +8,7 @@ function Playground() {
   const { data: catData } = useQuery(
     ["cat"],
     () => {
-      return Axios.get("https://catfact.ninja/fact").then((res) => res.data);
+      return axios.get("https://catfact.ninja/fact").then((res) => res.data);
     },
     {
       refetchInterval: 1500,

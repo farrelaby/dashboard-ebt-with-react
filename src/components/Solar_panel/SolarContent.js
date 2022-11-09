@@ -3,13 +3,15 @@ import "./SolarContent.css";
 import DataContainer from "../Template/DataContainer/DataContainer";
 import DataListrik from "../Template/DataListrik/DataListrik";
 import { SeeMore } from "../Template/SeeMore/SeeMore";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 function SolarContent() {
+  const [pageRef] = useAutoAnimate();
+
   const [volt, setVolt] = useState(0);
   const [ampere, setAmpere] = useState(0);
   const [watt, setWatt] = useState(0);
   const [kWh, setKWh] = useState(0);
-  const [percent, setPercent] = useState(0);
   const [isAC, setIsAC] = useState(true);
 
   const changeAC = () => {
@@ -62,11 +64,20 @@ function SolarContent() {
   };
   const isWind = false;
   // End of graph
+  // const map1 = a1.data.map((dat) => {
+  //   return dat.arus_suryaAC;
+  // });
+
+  // // Buat ngetes data
+  // useEffect(() => {
+  //   console.log(a1.data);
+  //   console.log(map1);
+  // }, []); // dibuat first render only
 
   return (
     <div className="content">
       <div className="flex flex-row my-10">
-        <h1 className="flex-1 w-64 text-5xl font-extraboldbold">Solar Panel</h1>
+        <h1 className="flex-1 w-64 text-5xl font-extrabold">Solar Panel</h1>
         <div className="flex-1 w-10 flex flex-col text-right mt-4 mr-28 text-slate-50">
           <div className="text-2xl">Yogyakarta</div>
 
@@ -95,27 +106,34 @@ function SolarContent() {
           DC
         </button>
       </div>
-      {isAC ? (
-        <div className="solar-content-container">
-          <DataContainer
-            watt={watt}
-            kWh={kWh}
-            graph_daya_data={data_daya}
-            graph_energi_data={data_energi}
-            isWind={isWind}
-          />
-          <SeeMore volt={volt} ampere={ampere} />
-        </div>
-      ) : (
-        <div className="flex flex-row gap-4 mt-16 justify-center">
-          <div className="env-num w-60 h-60">
-            <DataListrik judul="Tegangan" angka={volt} satuan="V" />
+      <div>
+        {/* INI AC */}
+        {isAC ? (
+          <div className="solar-content-container" ref={pageRef}>
+            <DataContainer
+              watt={watt}
+              kWh={kWh}
+              graph_daya_data={data_daya}
+              graph_energi_data={data_energi}
+              isWind={isWind}
+            />
+            <SeeMore volt={volt} ampere={ampere} />
           </div>
-          <div className="env-num w-60 h-60">
-            <DataListrik judul="Arus" angka={ampere} satuan="A" />
+        ) : (
+          // INI DC
+          <div
+            className="flex flex-row gap-4 mt-16 justify-center"
+            ref={pageRef}
+          >
+            <div className="bg-[#111827] outline outline-offset-1 outline-1 outline-white rounded-xl shadow-xl hover:scale-105 hover:-translate-y-2 transition-transform w-60 h-60">
+              <DataListrik judul="Tegangan" angka={volt} satuan="V" />
+            </div>
+            <div className="bg-[#111827] outline outline-offset-1 outline-1 outline-white rounded-xl shadow-xl hover:scale-105 hover:-translate-y-2 transition-transform w-60 h-60">
+              <DataListrik judul="Arus" angka={ampere} satuan="A" />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

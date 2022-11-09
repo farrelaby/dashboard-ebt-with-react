@@ -13,10 +13,9 @@
 
 .wind-content-container {
   display: grid;
-  grid-template-rows: 0.2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   position: relative;
   top: 55px;
-  justify-items: center;
 }
 
 .env-num {

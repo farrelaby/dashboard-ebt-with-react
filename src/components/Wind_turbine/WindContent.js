@@ -9,9 +9,6 @@ function WindContent() {
   const [watt, setWatt] = useState(0);
   const [kWh, setKWh] = useState(0);
 
-  const label_1 = "Daya";
-  const label_2 = "Kec. Angin";
-
   // Graph
   const data_daya = {
     labels: ["1", "2", "3", "4", "5"],

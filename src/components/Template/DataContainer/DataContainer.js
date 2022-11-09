@@ -1,11 +1,17 @@
+import { MonthDate } from "../../Datepicker/MonthDate";
+import { SingleDate } from "../../Datepicker/SingleDate";
+import { RangeDate } from "../../Datepicker/RangeDate";
 import React, { useState } from "react";
 import Graph from "../Graph/Graph";
 // Ini template kotak tegangan dkk
 import DataListrik from "../DataListrik/DataListrik";
 import "./DataContainer.css";
-import { DatePicker } from "@mantine/dates";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 function DataContainer(props) {
+  const [renderRef] = useAutoAnimate();
+
+  const [singleDate, setSingleDate] = useState(new Date());
   const [startDate, setStartdate] = useState(new Date());
   const [endDate, setEnddate] = useState(new Date());
 
@@ -14,7 +20,17 @@ function DataContainer(props) {
     setIsDaya(true);
   };
   const changeEnergi = () => {
-    setIsDaya(false);
+    setIsDaya(!isDaya);
+  };
+
+  const [dateRange, setDateRange] = useState("harian");
+  const changeDateRange = (e) => {
+    setDateRange(e.target.value);
+  };
+
+  const [monthDate, setMonthDate] = useState(0);
+  const changeMonthDate = (e) => {
+    setMonthDate(Number(e.target.value));
   };
 
   const isWind = props.isWind;
@@ -69,68 +85,97 @@ function DataContainer(props) {
   };
 
   return (
-    <div className="var-container">
-      <div className="var-graph rounded-xl shadow-xl">
-        <div className="flex flex-row gap-8">
-          <button
-            className={`${
-              isDaya
-                ? `bg-[hsl(220,80%,50%)]`
-                : `bg-[hsl(220,60%,35%)] hover:bg-[hsl(220,60%,45%)]`
-            } text-white font-bold mt-4 rounded shadow-md `}
-            onClick={() => {
-              changeDaya();
-            }}
-          >
-            Daya
-          </button>
-          <button
-            className={`${
-              !isDaya
-                ? `bg-[hsl(220,80%,50%)]`
-                : `bg-[hsl(220,60%,35%)] hover:bg-[hsl(220,60%,45%)]`
-            } text-white font-bold mt-4 rounded shadow-md`}
-            onClick={() => {
-              changeEnergi();
-            }}
-          >
-            Energi
-          </button>
-          {console.log("afkh iswind : " + isWind)}
+    <div className="var-container ">
+      <div className="var-graph outline outline-offset-1 outline-1 outline-white rounded-xl shadow-xl bg-gray-900">
+        <div className="grid grid-flow-col items-center">
+          <div className="flex flex-row gap-4 ml-14">
+            <button
+              className={`${
+                isDaya
+                  ? `bg-[hsl(220,80%,50%)]`
+                  : `bg-[hsl(220,60%,35%)] hover:bg-[hsl(220,60%,45%)]`
+              } text-white font-bold mt-4 rounded shadow-md `}
+              onClick={() => {
+                changeDaya();
+              }}
+            >
+              Daya
+            </button>
+            <button
+              className={`${
+                !isDaya
+                  ? `bg-[hsl(220,80%,50%)]`
+                  : `bg-[hsl(220,60%,35%)] hover:bg-[hsl(220,60%,45%)]`
+              } text-white font-bold mt-4 rounded shadow-md`}
+              onClick={() => {
+                changeEnergi();
+              }}
+            >
+              Energi
+            </button>
+          </div>
+          <>
+            <select
+              className="relative left-48 mt-5 h-9 w-28 bg-[hsl(220,61%,25%)] text-white rounded-md"
+              value={dateRange}
+              onChange={changeDateRange}
+            >
+              <option value="harian">Harian</option>
+              <option value="mingguan">Mingguan</option>
+              <option value="bulanan">Bulanan</option>
+            </select>
+          </>
         </div>
-        {!isDaya ? (
-          <>
-            {/* INI ENERGI */}
-            <div className="flex flex-row gap-8">
-              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 my-4 rounded-md shadow-lg">
-                <div className="text-white">Dari</div>
-                <DatePicker value={startDate} onChange={setStartdate} />
-              </div>
-              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 my-4 rounded-md shadow-lg">
-                <div className="text-white">Sampai</div>
-                <DatePicker value={endDate} onChange={setEnddate} />
-              </div>
-            </div>
-            {/* {console.log(startDate)} */}
-            <Graph data={props.graph_energi_data} options={options} />
-          </>
-        ) : (
-          <>
-            {/* INI DAYA */}
-            <div className="flex flex-row gap-8">
-              <div className="flex flex-row gap-3 items-center bg-[hsl(230,8%,16%)] p-2 my-4 rounded-md shadow-lg">
-                <div className="text-white">Tanggal</div>
-                <DatePicker value={startDate} onChange={setStartdate} />
-              </div>
-            </div>
-            <Graph data={props.graph_daya_data} options={options} />
-          </>
-        )}
+        <div ref={renderRef}>
+          {!isDaya ? (
+            <>
+              {/* INI ENERGI */}
+
+              {dateRange === "harian" ? (
+                <SingleDate
+                  startDate={singleDate}
+                  setStartdate={setSingleDate}
+                />
+              ) : dateRange === "mingguan" ? (
+                <RangeDate
+                  startDate={startDate}
+                  setStartdate={setStartdate}
+                  endDate={endDate}
+                  setEnddate={setEnddate}
+                />
+              ) : (
+                <MonthDate value={monthDate} onChange={changeMonthDate} />
+              )}
+              {/* {console.log(startDate)} */}
+              <Graph data={props.graph_energi_data} options={options} />
+            </>
+          ) : (
+            <>
+              {/* INI DAYA */}
+              {dateRange === "harian" ? (
+                <SingleDate
+                  startDate={singleDate}
+                  setStartdate={setSingleDate}
+                />
+              ) : dateRange === "mingguan" ? (
+                <RangeDate
+                  startDate={startDate}
+                  setStartdate={setStartdate}
+                  endDate={endDate}
+                  setEnddate={setEnddate}
+                />
+              ) : (
+                <MonthDate value={monthDate} onChange={changeMonthDate} />
+              )}
+              <Graph data={props.graph_daya_data} options={options} />
+            </>
+          )}
+        </div>
       </div>
-      <div className="var-num rounded-xl shadow-xl hover:scale-105 hover:-translate-y-2 transition-transform">
+      <div className="bg-[#111827] var-num outline outline-offset-1 outline-1 outline-white rounded-xl shadow-xl hover:scale-105 hover:-translate-y-2 transition-transform">
         <DataListrik judul="Daya" angka={props.watt} satuan="W" />
       </div>
-      <div className=" var-num rounded-xl shadow-xl hover:scale-105 hover:translate-y-2 transition-transform">
+      <div className="bg-[#111827] var-num outline outline-offset-1 outline-1 outline-white rounded-xl shadow-xl hover:scale-105 hover:translate-y-2 transition-transform">
         <DataListrik judul="Energi" angka={props.kWh} satuan="kWh" />
       </div>
     </div>

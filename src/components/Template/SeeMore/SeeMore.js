@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import DataListrik from "../DataListrik/DataListrik";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 export function SeeMore({ volt, ampere }) {
   const [isAdv, setIsAdv] = useState(false);
 
+  const [seeRef] = useAutoAnimate();
+
   return (
-    <div id="seemore" className="flex flex-col gap-8 place-items-center">
+    <div
+      ref={seeRef}
+      id="seemore"
+      className="flex flex-col gap-8 place-items-center mt-8"
+    >
       <button
         className={`${
           isAdv
@@ -21,10 +28,10 @@ export function SeeMore({ volt, ampere }) {
 
       {isAdv ? (
         <div className="flex flex-row gap-4">
-          <div className="env-num w-60 h-60 rounded-xl shadow-xl hover:scale-105 transition-transform">
+          <div className="text-white w-60 h-60 bg-[#111827] outline outline-offset-1 outline-1 outline-white rounded-xl shadow-xl hover:scale-105 hover:-translate-x-2 transition-transform">
             <DataListrik judul="Tegangan" angka={volt} satuan="V" />
           </div>
-          <div className="env-num w-60 h-60 rounded-xl shadow-xl hover:scale-105 transition-transform">
+          <div className="text-white w-60 h-60 bg-[#111827] outline outline-offset-1 outline-1 outline-white rounded-xl shadow-xl hover:scale-105 hover:translate-x-2 transition-transform">
             <DataListrik judul="Arus" angka={ampere} satuan="A" />
           </div>
         </div>
